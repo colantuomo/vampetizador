@@ -1,0 +1,12 @@
+function auto-vamp(){
+    if [ "$USER" != "paulo.martins" ]; then
+        wget https://conteudo.imguol.com.br/2012/09/25/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg
+        path=$PWD
+        path+="/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg"
+        gsettings set org.gnome.desktop.background picture-uri "file:////$path"
+        gsettings set org.gnome.desktop.screensaver picture-uri "file:////$path"
+        #curl -i -X POST -d 'payload={"text": "Já sabem `'$USER'` vitima da vez \n\n ![](https://conteudo.imguol.com.br/2012/09/25/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg)"}' https://mattermost.valebroker.com.br/hooks/8z9tbmohpiyixembtbcmgeu6qo
+    else 
+    echo 'Você não pode vampetizar o criador!  ( ͡° ͜ʖ ͡°)'
+    fi
+}
