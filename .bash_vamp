@@ -1,4 +1,4 @@
-function auto-vamp(){
+function auto-vamp-teste(){
     if [ "$USER" != "paulo.martins" ]; then
         wget https://conteudo.imguol.com.br/2012/09/25/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg
         path=$PWD
