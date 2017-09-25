@@ -1,13 +1,30 @@
-
-
-echo 'Iniciando vampetização...'
 function auto-vamp(){
-        wget https://conteudo.imguol.com.br/2012/09/25/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg
-        path=$PWD
-        path+="/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg"
+
+        rm ~/Downloads/vampeta.jpg || echo ""
+
+        #GRUPO VAMP grupo="https://mattermost.valebroker.com.br/hooks/8z9tbmohpiyixembtbcmgeu6qo"
+        grupo="https://mattermost.valebroker.com.br/hooks/k7drh15t97gibn793zcri9jqrw"
+        
+        rdm=$(((RANDOM % 10 ) + 1 ))
+
+        case $rdm in
+        1) img="http://www.jorbras.com.br/portal/images/edicao229/vampeta-1.jpg" ;;
+        2) img="http://g.glbimg.com/og/gs/gsat2/f/original/2012/11/01/vampeta_muvuca.jpg" ;;
+        3) img="http://jovempan.uol.com.br/wp-content/uploads/2017/07/Vampeta-%C3%A9-comentarista-da-R%C3%A1dio-Jovem-Pan.jpg" ;;
+        4) img="https://img.r7.com/images/2014/06/25/2f3cto526y_6zq7iujy5x_file.jpg" ;;
+        5) img="https://conteudo.imguol.com.br/blogmiltonneves/2008/10/vampeta.jpg" ;;
+        6) img="https://img.r7.com/images/2014/06/25/35uegnu4hd_i494wnd8_file.jpg" ;;
+        7) img="http://images.performgroup.com/di/library/Goal_France/8/f3/vampeta-psg_12dontpb7wbz51eynlisl3nciq.jpg" ;;
+        8) img="http://bolaporcima.final.com.br/wp-content/uploads/sites/104/2016/04/vampeta-toma-sorvete-enquanto-acompanha-uma-partida-de-futebol-1299716262839_1024x768-1-620x465.jpg" ;;
+        9) img="https://abrilexame.files.wordpress.com/2016/09/size_960_16_9_vampeta.jpg" ;;
+        10) img="https://conteudo.imguol.com.br/2012/09/25/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg" ;;
+        esac
+
+        wget "$img" -O ~/Downloads/vampeta.jpg
+        path="/home/$USER/Downloads/vampeta.jpg"
+
         gsettings set org.gnome.desktop.background picture-uri "file:////$path"
         gsettings set org.gnome.desktop.screensaver picture-uri "file:////$path"
-        curl -i -X POST -d 'payload={"text": "Já sabem `'$USER'` vitima da vez \n\n ![](https://conteudo.imguol.com.br/2012/09/25/vampeta-fala-sobre-ensaio-nu-para-a-g-magazine-1348607286095_956x500.jpg)"}' https://mattermost.valebroker.com.br/hooks/k7drh15t97gibn793zcri9jqrw
-        echo 'Vampetização finalizada'
-        #https://mattermost.valebroker.com.br/hooks/k7drh15t97gibn793zcri9jqrw <- Grupo OFF
+
+        curl -i -X POST -d 'payload={"text": "Já sabem `'$USER'` vitima da vez \n\n ![]('$img')"}' $grupo
 }
